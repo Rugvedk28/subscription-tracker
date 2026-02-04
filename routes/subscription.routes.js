@@ -21,4 +21,16 @@ subscriptionRouter.delete("/:id", (req, res) => {
   res.send(`Delete subscription with id ${req.params.id} route`);
 });
 
+subscriptionRouter.get("/user/:id", (req, res) => {
+  res.send(`Get subscriptions for user with id ${req.params.id} route`);
+});
+
+subscriptionRouter.post("/:id/cancel", (req, res) => {
+    res.send(`Cancel subscription with id ${req.params.id} route`);
+});
+
+subscriptionRouter.post("/renewals", (req, res) => {
+    res.send("Handle subscription renewals route");
+});
+
 export default subscriptionRouter; 

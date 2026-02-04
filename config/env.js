@@ -3,4 +3,4 @@ import { config } from "dotenv";
 config({ path: `.env.${process.env.NODE_ENV || 'development'}.local` });
 
 // keep original destructuring style but provide safe defaults so PORT is never undefined
-export const { PORT } = process.env;
+export const { PORT, NODE_ENV, DB_URI } = process.env;

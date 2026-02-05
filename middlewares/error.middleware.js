@@ -1,7 +1,7 @@
+// Error handling middleware
+//Global error handler for Mongoose errors and other unhandled errors
 const errorMiddleware = (err, req, res, next) => {
     try {
-
-        //Global error handler for Mongoose errors and other unhandled errors
         let error = { ...err };
         error.message = err.message;
         console.log(err);

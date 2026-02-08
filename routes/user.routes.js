@@ -1,14 +1,11 @@
 import { Router } from "express";
+import { getUserById, getUsers } from "../controllers/user.controller.js";
 const userRouter = Router();
 
 // Example auth route
-userRouter.get("/", (req, res) => {
-  res.send("User profile route");
-});
+userRouter.get("/", getUsers);
 
-userRouter.get("/:id", (req, res) => {
-  res.send(`User with id ${id} settings route`);
-});
+userRouter.get("/:id", getUserById);
 
 userRouter.post("/", (req, res) => {
   res.send("Create new user route");

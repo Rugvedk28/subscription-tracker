@@ -7,16 +7,19 @@ import authRouter from "./routes/auth.routes.js";
 import userRouter from "./routes/user.routes.js";
 import subscriptionRouter from "./routes/subscription.routes.js";
 import errorMiddleware from "./middlewares/error.middleware.js";
+import arcjetMiddleware from "./middlewares/arcjet.middleware.js";
 
 const app = express();
 
 app.use(express.json());// Middleware to parse JSON bodies -> allows us to access req.body in our routes
 app.use(express.urlencoded({ extended: false })); // Middleware to parse URL-encoded bodies -> allows us to access form data in req.body
 app.use(cookieParser()); // Middleware to parse cookies -> allows us to access cookies in req.cookies
+app.use(arcjetMiddleware);// Middleware to protect against bots and rate limit requests using Arcjet
 
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/subscriptions', subscriptionRouter);
+
 
 app.use(errorMiddleware);
 
